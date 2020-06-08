@@ -1,10 +1,11 @@
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
-def init_browser():
+
+def scrape():
    executable_path = {'executable_path': 'chromedriver.exe'}
    browser = Browser('chrome', **executable_path, headless=False)
-def scrape():
-    browser = init_browser()
+   news_title,news_p = mars_news(browser)
+
    # NASA Mars News Site Web Scraper
 def mars_news(browser):
     # Visit the NASA Mars News Site
@@ -12,16 +13,20 @@ def mars_news(browser):
     browser.visit(url)
     html = browser.html
     soup = bs(html, "html.parser")
+    element = soup.select_one("ul.item_list li.slide")
+    news_title = element.find("div",class_="content_title").text
+    news_p = element.find("div",class_="article_teaser_body").text
+    return news_title,news_p
+
+
    # NASA JPL (Jet Propulsion Laboratory) Site Web Scraper
 def featured_image(browser):
     # Visit the NASA JPL (Jet Propulsion Laboratory) Site
     url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(url)
 
-    # Ask Splinter to Go to Site and Click Button with Class Name full_image
-    # <button class="full_image">Full Image</button>
-    full_image_button = browser.find_by_id("full_image")
-    full_image_button.click()
+    
+   
    # Mars Weather Twitter Account Web Scraper
 def twitter_weather(browser):
     # Visit the Mars Weather Twitter Account
@@ -31,8 +36,10 @@ def twitter_weather(browser):
     # Parse Results HTML with BeautifulSoup
     html = browser.html
     weather_soup = BeautifulSoup(html, "html.parser")
+
    # Mars Facts Web Scraper
 def mars_facts():
+
    # Mars Hemispheres Web Scraper
 def hemisphere(browser):
     # Visit the USGS Astrogeology Science Center Site
