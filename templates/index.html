@@ -4,12 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hot Finds</title>
+  <title>Mission to Mars</title>
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+  
   <div class="container">
+    <!-- Jumbotron -->
     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
+    </div> 
+  </div>  <!--Container-->
+    <!-- Latest Mars News Title and Paragraph-->
+  <div class="container">
+      <h2><b>Latest Mars News</b></h2>
+      <h3><b>{{mars_info.title }}</b></h3>
+      <h3>{{mars_info.news_paragraph }}</h3>  
+  </div> <!--Container-->
+    <!--Featured Image of Mars-->
+  <div class="container">
+      <div class="row">
+        <h2><b>Featured Mars Image</b></h2>
+        <img src="{{mars_info.featured_img}}" alt="Mars Featured Image", id="description-image" >
+      </div>
+  </div><!--Container-->
+    <!-- Weather card-->
+  <div class="container-fluid">
+      <div class="jumbotron text-center">
+        <h3><b>Current Weather on Mars</b></h3>
+        <p>{{mars_info.weather}}</p>
+      </div>
+  </div><!--Container-->
+  <!-- Html Table-->    
+<div class="row">
+  <div class="col-md-12">
+  <h3><b>Mars Facts</b></h3>
+  <!-- string interpolation-->
+  {{mars_info.facts|safe}}
+</div>
+</div><!--Container-->
+<!--Hemisphere Links-->
+<div class="description-header">
+  <h3><b>Mars Hemispheres</b></h3>
+  <div class="row" id="Hemisphere-links">
+    <div class="col-md-6">
+      <div class="thumbnail">
+      {% for hemisphere in mars_info.hemis %}
+      <img src="{{hemisphere.url}}" class="imageNav-photo"> 
+      <h4 class="heading">{{hemisphere.title}}</h4>
+      {% endfor %}
+     </div>
     </div>
+  </div>
+</div><!--Container-->
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
+
+</body>
+
+</html>  
