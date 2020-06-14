@@ -1,0 +1,24 @@
+
+/* Styling the image features */
+#description-image{
+    float:left;
+    width:250px;
+    height:250px;
+    margin-right:20px;
+    }
+.description-header{
+        font-size: 30px;
+        font-weight: bold;
+        color:#4aaaa5;
+        padding-top: 30px;
+        } 
+#Hemisphere-links{
+    padding-top: 20px;
+    padding-right: 20px;
+    
+}        
+/* Styling the images of all visualizations*/    
+.imageNav-photo{
+    width:250px;
+    height:250px;
+}
